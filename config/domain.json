@@ -1,0 +1,26 @@
+{
+	"dir": "./temp/",
+	"fieldMap": {
+		"varchar": "java.lang.String",
+		"int": "java.lang.Integer",
+		"tinyint": "java.lang.Integer",
+		"bigint": "java.lang.Long",
+		"decimal": "java.math.BigDecimal",
+		"datetime": "java.util.Date"
+	},
+	"tables": [
+	    {
+	    	"module": "bsa",
+	    	"name": "BM_ACCOUNT"
+	    },
+	    {
+	    	"module": "frame",
+	    	"name": "bm_appointment",
+	    	"isShare": "Y"
+	    },
+	    {
+	    	"module": "permission",
+	    	"name": "bm_beautician"
+	    }
+	]
+}

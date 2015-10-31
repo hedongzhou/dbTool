@@ -1,0 +1,32 @@
+package cn.mgcloud.<%=module%>.domain;
+
+import java.io.Serializable;
+
+/**
+ * 表<%=name%>
+ */
+public class <%=className%> implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+<% if(isShare == 'Y') { %>
+	/**
+	 * 需要分表
+	 */
+	public static final boolean _share = true;
+<% }
+	fields.forEach(function(field) { %>
+	/**
+	 * <%=field.alias%> <%=field.comment%>
+	 */
+	private <%=field.javaType%> <%=field.name%>;
+<% })
+	fields.forEach(function(field) { %>
+	public <%=field.javaType%> get<%=field.fnName%>() {
+		return <%=field.name%>;
+	}
+
+	public void set<%=field.fnName%>(<%=field.javaType%> <%=field.name%>) {
+		this.<%=field.name%> = <%=field.name%>;
+	}
+<% }) %>
+}

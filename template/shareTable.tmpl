@@ -1,0 +1,15 @@
+<% suffixs.forEach(function(suffix){ %>
+CREATE TABLE BM_DELIVER<%=suffix%> (
+  did bigint(19) unsigned NOT NULL,
+  consumeid bigint(19) unsigned NOT NULL COMMENT '消费id',
+  consumedetailid bigint(19) unsigned DEFAULT 0 COMMENT '消费明细id',
+  mode tinyint(2) NOT NULL COMMENT '配送方式：0:到店自取、1:快递配送',
+  address varchar(300) NOT NULL,
+  status tinyint(2) DEFAULT 0,
+  create_user varchar(50) DEFAULT NULL,
+  create_date datetime DEFAULT NULL,
+  update_user varchar(50) DEFAULT NULL,
+  update_date datetime DEFAULT NULL,
+  PRIMARY KEY (`did`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+<% }) %>

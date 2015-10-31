@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.mgcloud.<%=module%>.domain">
+	<class name="<%=className%>" table="<%=name%>" dynamic-insert="true" dynamic-update="true">
+		<meta attribute="sync-DAO">false</meta><% fields.forEach(function(field) { if (field.isPrimary === 'Y') { %>
+		<id name="<%=field.name%>" column="<%=field.alias%>" type="<%=field.javaType%>"><% if (field.isAuto == 'Y') { %>
+			<generator class="identity" /><% } else { %>
+			<generator class="assigned" /><% } %>
+		</id><% } else { %>
+		<property name="<%=field.name%>" column="<%=field.alias%>" type="<%=field.javaType%>" /><% }}) %>
+	</class>
+</hibernate-mapping>
