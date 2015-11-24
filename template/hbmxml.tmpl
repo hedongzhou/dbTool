@@ -4,11 +4,15 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping package="cn.mgcloud.<%=module%>.domain">
 	<class name="<%=className%>" table="<%=name%>" dynamic-insert="true" dynamic-update="true">
-		<meta attribute="sync-DAO">false</meta><% fields.forEach(function(field) { if (field.isPrimary === 'Y') { %>
-		<id name="<%=field.name%>" column="<%=field.alias%>" type="<%=field.javaType%>"><% if (field.isAuto == 'Y') { %>
+		<meta attribute="sync-DAO">false</meta><% if (pkFields.length > 1) { %>
+		<composite-id><% pkFields.forEach(function(field) { %>
+			<key-property name="<%=field.name%>" column="<%=field.alias%>" type="<%=field.javaType%>"></key-property><% }) %>
+		</composite-id><% } else if (pkFields.length === 1) { %>
+		<id name="<%=pkFields[0].name%>" column="<%=pkFields[0].alias%>" type="<%=pkFields[0].javaType%>"><% if (pkFields[0].isAuto == 'Y') { %>
 			<generator class="identity" /><% } else { %>
 			<generator class="assigned" /><% } %>
-		</id><% } else { %>
-		<property name="<%=field.name%>" column="<%=field.alias%>" type="<%=field.javaType%>" /><% }}) %>
+		</id><% }
+			fields.forEach(function(field) { if (field.isPrimary != 'Y') { %>
+		<property name="<%=field.name%>" column="<%=field.alias%>" type="<%=field.javaType%>" not-null="<% if (field.isNull === 'Y') { %>false<% } else { %>true<% } %>"/><% }}) %>
 	</class>
 </hibernate-mapping>

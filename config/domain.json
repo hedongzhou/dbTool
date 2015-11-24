@@ -10,17 +10,9 @@
 	},
 	"tables": [
 	    {
-	    	"module": "bsa",
-	    	"name": "BM_ACCOUNT"
-	    },
-	    {
-	    	"module": "frame",
-	    	"name": "bm_appointment",
-	    	"isShare": "Y"
-	    },
-	    {
 	    	"module": "permission",
-	    	"name": "bm_beautician"
+	    	"name": "BM_SIGN",
+	    	"pkName": "id"
 	    }
 	]
 }

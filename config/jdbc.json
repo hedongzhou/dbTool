@@ -1,7 +1,7 @@
 {
 	"host": "192.168.1.19",
 	"port": 3306,
-	"database": "mgcloud_0724",
+	"database": "mgcloud",
 	"user": "root",
 	"password": "mleso"
 }

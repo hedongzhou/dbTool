@@ -1,0 +1,4 @@
+{
+	"source": "./template/数据字典.xls",
+	"target": "./temp/DDL.sql"
+}
