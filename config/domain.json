@@ -1,5 +1,5 @@
 {
-	"dir": "./temp/",
+	"dir": "/Users/hedongzhou/Documents/my/workspace/microgold/MGCLOUD_MODEL/src/<%=module%>/cn/mgcloud/<%=module%>/domain",
 	"fieldMap": {
 		"varchar": "java.lang.String",
 		"int": "java.lang.Integer",
@@ -10,8 +10,8 @@
 	},
 	"tables": [
 	    {
-	    	"module": "permission",
-	    	"name": "BM_SIGN",
+	    	"module": "bsa",
+	    	"name": "bm_workreport",
 	    	"pkName": "id"
 	    }
 	]

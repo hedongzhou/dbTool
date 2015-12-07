@@ -81,14 +81,17 @@ domainConfig.tables.forEach(function(table) {
 			pkFields: pkFields
 		};
 
+		// 根目录
+		var dir = template.render(domainConfig.dir, tableModel);
+
 		// 生成java类
-		file.write(domainConfig.dir + '/' + className + '.java', template.renderFile('./template/domain.tmpl', tableModel));
+		file.write(dir + '/' + className + '.java', template.renderFile('./template/domain.tmpl', tableModel));
 
 		// 生成Hibernate映射文件
 		var hbmxml = name.toLowerCase().replace(/_(\w)/g, function(all, letter) {
 			return letter.toUpperCase();
 		});
 		hbmxml = hbmxml.substring(0, 1).toUpperCase() + hbmxml.substring(1);
-		file.write(domainConfig.dir + '/' + hbmxml + '.hbm.xml', template.renderFile('./template/hbmxml.tmpl', tableModel));
+		file.write(dir + '/' + hbmxml + '.hbm.xml', template.renderFile('./template/hbmxml.tmpl', tableModel));
 	});
 });
