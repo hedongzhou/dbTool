@@ -10,8 +10,8 @@
 	},
 	"tables": [
 	    {
-	    	"module": "bsa",
-	    	"name": "bm_workreport",
+	    	"module": "frame",
+	    	"name": "bm_app_version",
 	    	"pkName": "id"
 	    }
 	]
