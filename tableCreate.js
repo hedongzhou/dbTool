@@ -5,7 +5,9 @@ var template = require('./common/template');
 
 var tableConfig = config.get('./config/table.json');
 
-var rowFieldName = ['tableName', 'tableNameCN', 'fieldName', 'comment', 'type', 'key', 'isNull', 'isAuto', 'remark'];
+var rowFieldName = [
+		'tableName', 'tableNameCN', 'fieldName', 'comment', 'type', 'key', 'isNull', 'isAuto', 'remark'
+];
 
 var sheets = xls.read(tableConfig.source);
 
@@ -19,9 +21,9 @@ var getRow = function(row) {
 	return rowModel;
 };
 
-sheets.forEach(function(sheet) {
-	var tables = [];
+var tables = [];
 
+sheets.forEach(function(sheet) {
 	sheet.data.shift();
 	sheet.data.forEach(function(row) {
 		row = getRow(row);
@@ -55,12 +57,12 @@ sheets.forEach(function(sheet) {
 			table.fields.push(field);
 		}
 	});
-
-	tables.forEach(function(table) {
-		table.fields = table.pkFields.concat(table.fields);
-	});
-
-	file.write(tableConfig.target, template.renderFile('./template/table.tmpl', {
-		tables: tables
-	}));
 });
+
+tables.forEach(function(table) {
+	table.fields = table.pkFields.concat(table.fields);
+});
+
+file.write(tableConfig.target, template.renderFile('./template/table.tmpl', {
+	tables: tables
+}));

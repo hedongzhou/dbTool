@@ -1,7 +1,7 @@
 <% tables.forEach(function(table) { %>/********* <%=table.tableName%> (<%=table.tableNameCN%>) **********/
 DROP TABLE IF EXISTS <%=table.tableName%>;
-CREATE TABLE <%=table.tableName%> (<% for(var i = 0; i < table.fields.length; i++) { var field = table.fields[i] %>
-	<%=field.fieldName%> <%=field.type%><% if (field.isNull === 'N') { %> NOT<% } %> NULL<% if (field.isAuto === 'Y') { %> auto_increment<% } if (field.comment) { %> COMMENT '<%=field.comment%>'<% } if (table.pkFields.length > 0 || i < table.fields.length - 1) { %>,<% } if (field.remark) { %> #<%=field.remark%><% }} if (table.pkFields.length > 0) { %>
+CREATE TABLE <%=table.tableName%> (<% for(var i = 0; i < table.fields.length; i++) { var field = table.fields[i]; %>
+	<%=field.fieldName%> <%-field.type%><% if (field.isNull === 'N') { %> NOT<% } %> NULL<% if (field.isAuto === 'Y') { %> auto_increment<% } if (field.comment) { %> COMMENT '<%=field.comment%>'<% } if (table.pkFields.length > 0 || i < table.fields.length - 1) { %>,<% } if (field.remark) { %> #<%=field.remark%><% }} if (table.pkFields.length > 0) { %>
 	CONSTRAINT PK_<%=table.tableName%> PRIMARY KEY (<% for(var i = 0; i < table.pkFields.length; i++) { %><%=table.pkFields[i].fieldName%><% if (i < table.pkFields.length - 1) { %>, <% }} %>)<% } %>
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

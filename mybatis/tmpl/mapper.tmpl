@@ -1,0 +1,47 @@
+package <%=module%>.mapper;
+<% if (noCU != 'Y') {%>
+import org.apache.ibatis.annotations.Delete;<%}%>
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import <%=module%>.domain.<%=className%>;
+
+/**
+ * <%=nameCN%>
+ */
+public interface <%=className%>Mapper {
+
+	/**
+	 * 获取<%=nameCN%>
+	 * <% pkFields.forEach(function(field) { %>
+	 * @param <%=field.alias%>
+	 *            <%=field.comment%><% })%>
+	 * @return
+	 */
+	@Select("SELECT * FROM <%=name%> WHERE <% for (var i = 0; i < pkFields.length; i++) { if (i > 0) {%> AND <%}%><%=pkFields[i].alias%> = #{<%=pkFields[i].name%>}<%}%>")
+	public <%=className%> get(<% for (var i = 0; i < pkFields.length; i++) { if (i > 0) {%>, <%}%>@Param("<%=pkFields[i].alias%>") <%=pkFields[i].javaType%> <%=pkFields[i].name%><%}%>);
+
+	/**
+	 * 保存<%=nameCN%>
+	 * 
+	 * @param <%=variableName%>
+	 */
+	public void save(<%=className%> <%=variableName%>);
+
+	/**
+	 * 更新<%=nameCN%>
+	 * 
+	 * @param <%=variableName%>
+	 */
+	public void update(<%=className%> <%=variableName%>);<% if (noCU != 'Y') {%>
+
+	/**
+	 * 删除<%=nameCN%>
+	 * <% pkFields.forEach(function(field) { %>
+	 * @param <%=field.alias%>
+	 *            <%=field.comment%><% })%>
+	 */
+	@Delete("UPDATE <%=name%> SET flag = 'N', updateUser = #{updateUser}, updateTime = NOW() WHERE <% for (var i = 0; i < pkFields.length; i++) { if (i > 0) {%> AND <%}%><%=pkFields[i].alias%> = #{<%=pkFields[i].name%>}<%}%>")
+	public void delete(<% for (var i = 0; i < pkFields.length; i++) { if (i > 0) {%>, <%}%>@Param("<%=pkFields[i].alias%>") <%=pkFields[i].javaType%> <%=pkFields[i].name%><%}%>, @Param("updateUser") java.lang.String updateUser);<%}%>
+
+}

@@ -1,20 +1,14 @@
-package com.<%=module%>.domain;
+package <%=module%>.domain;
 
-import java.io.Serializable;
+<% if (noCU != 'Y') {%>import com.chinananhang.framework.jdbc.domain.BaseDomain;<%} else {%>import com.chinananhang.framework.jdbc.vo.Page;<%}%>
 
 /**
- * 表<%=name%>
+ * <%=nameCN%> <%=name%>
  */
-public class <%=className%> implements Serializable {
+public class <%=className%> <% if (noCU != 'Y') {%>extends BaseDomain<%} else {%>extends Page<%}%> {
 
 	private static final long serialVersionUID = 1L;
-<% if(isShare == 'Y') { %>
-	/**
-	 * 需要分表
-	 */
-	public static final boolean _share = true;
-<% }
-	fields.forEach(function(field) { %>
+<% fields.forEach(function(field) { %>
 	/**
 	 * <%=field.alias%> <%=field.comment%>
 	 */

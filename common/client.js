@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var config = require('./config');
 
 var client = {
+	config: './config/jdbc.json',
 	/**
 	 * 创建连接
 	 * 
@@ -10,7 +11,7 @@ var client = {
 	 * @returns
 	 */
 	connect: function() {
-		return mysql.createConnection(config.get('./config/jdbc.json'));
+		return mysql.createConnection(config.get(client.config));
 	},
 	/**
 	 * 查询

@@ -1,0 +1,34 @@
+package com.mtos.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * 表<%=name%>
+ */
+@Entity
+@Table(name = "<%=name%>")
+public class <%=className%> extends BaseDomain {
+
+	private static final long serialVersionUID = 1L;
+<% fields.forEach(function(field) { %>
+	/**
+	 * <%=field.alias%> <%=field.comment%>
+	 */<% if (field.isPrimary == 'Y') { %>
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)<% } %>
+	private <%=field.javaType%> <%=field.name%>;
+<% })
+	fields.forEach(function(field) { %>
+	public <%=field.javaType%> get<%=field.fnName%>() {
+		return <%=field.name%>;
+	}
+
+	public void set<%=field.fnName%>(<%=field.javaType%> <%=field.name%>) {
+		this.<%=field.name%> = <%=field.name%>;
+	}
+<% }) %>
+}

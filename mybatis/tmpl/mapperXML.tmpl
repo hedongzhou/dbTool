@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="<%=module%>.mapper.<%=className%>Mapper">
+
+	<!-- 保存<%=nameCN%> -->
+	<select id="save" parameterType="<%=module%>.domain.<%=className%>" resultType="<%=module%>.domain.<%=className%>">
+		INSERT INTO <%=name%> (<% for (var i = 0; i < fields.length; i++) { if (fields[i].isAuto != 'Y') {%>
+			<%=fields[i].alias%><% if (i < fields.length - 1) {%>,<%}}}%><% if (noCU != 'Y') {%>,
+			flag,
+			createUser,
+			createTime,
+			updateUser,
+			updateTime<%}%>
+		)
+		VALUES (<% for (var i = 0; i < fields.length; i++) {%>
+			#{<%=fields[i].name%>}<% if (i < fields.length - 1) {%>,<%}}%><% if (noCU != 'Y') {%>,
+			'Y',
+			#{createUser},
+			NOW(),
+			#{updateUser},
+			NOW()<%}%>
+		)
+	</select>
+
+	<!-- 更新<%=nameCN%> -->
+	<select id="update" parameterType="<%=module%>.domain.<%=className%>" resultType="<%=module%>.domain.<%=className%>">
+		UPDATE <%=name%> SET<% for (var i = 0; i < fields.length; i++) { if (fields[i].isPrimary == 'N') {%>
+			<%=fields[i].alias%> = #{<%=fields[i].name%>}<% if (i < fields.length - 1) {%>,<%}}}%><% if (noCU != 'Y') {%>,
+			updateUser = #{updateUser},
+			updateTime = NOW()<%}%>
+		WHERE<% for (var i = 0; i < pkFields.length; i++) {%>
+			<% if (i > 0) {%>AND <%}%><%=pkFields[i].alias%> = #{<%=pkFields[i].name%>}<%}%>
+	</select>
+
+</mapper>

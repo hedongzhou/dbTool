@@ -1,5 +1,5 @@
 {
-	"dir": "/Users/hedongzhou/Documents/my/workspace/microgold/Share/src/hibernate/com/<%=module%>/domain",
+	"dir": "/Users/hedongzhou/Documents/my/workspace/microgold/Share/src/hibernate/com/mtos/domain",
 	"fieldMap": {
 		"varchar": "java.lang.String",
 		"int": "java.lang.Integer",
@@ -7,20 +7,15 @@
 		"bigint": "java.lang.Long",
 		"decimal": "java.math.BigDecimal",
 		"datetime": "java.util.Date",
-		"float": "java.lang.Double",
-		"text": "java.lang.String",
-		"smallint": "java.lang.Integer",
 		"date": "java.util.Date",
 		"double": "java.lang.Double"
 	},
 	"tables": [
 	    {
-	    	"module": "base",
 	    	"name": "STUDENT"
 	    },
 	    {
-	    	"module": "base",
-	    	"name": "ACTIVITY"
+	    	"name": "TEACHER"
 	    }
 	]
 }

@@ -1,0 +1,20 @@
+{
+	"dir": "/Users/hedongzhou/Documents/my/workspace/microgold/MZ_MODEL/src/mz/cn/mgcloud/mz/domain",
+	"fieldMap": {
+		"varchar": "java.lang.String",
+		"int": "java.lang.Integer",
+		"tinyint": "java.lang.Integer",
+		"bigint": "java.lang.Long",
+		"decimal": "java.math.BigDecimal",
+		"datetime": "java.util.Date",
+		"float": "java.lang.Double",
+		"text": "java.lang.String",
+		"smallint": "java.lang.Integer"
+	},
+	"tables": [
+	    {
+	    	"name": "BM_CONSUMEVOLUME",
+	    	"pkName": "id"
+	    }
+	]
+}

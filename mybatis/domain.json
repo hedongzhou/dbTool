@@ -1,5 +1,6 @@
 {
-	"dir": "/Users/hedongzhou/Documents/my/workspace/microgold/Share/src/hibernate/com/<%=module%>/domain",
+	"dir": "/Users/hedongzhou/Documents/my/workspace/part-time/FLOW_MG/src/java/com/chinananhang/flow/business",
+	"module": "com.chinananhang.flow.business",
 	"fieldMap": {
 		"varchar": "java.lang.String",
 		"int": "java.lang.Integer",
@@ -7,20 +8,17 @@
 		"bigint": "java.lang.Long",
 		"decimal": "java.math.BigDecimal",
 		"datetime": "java.util.Date",
-		"float": "java.lang.Double",
-		"text": "java.lang.String",
-		"smallint": "java.lang.Integer",
 		"date": "java.util.Date",
 		"double": "java.lang.Double"
 	},
 	"tables": [
 	    {
-	    	"module": "base",
-	    	"name": "STUDENT"
+	    	"name": "ORDERINFO",
+	    	"nameCN": "订单信息"
 	    },
 	    {
-	    	"module": "base",
-	    	"name": "ACTIVITY"
+	    	"name": "ORDERDETAIL",
+	    	"nameCN": "订单明细"
 	    }
 	]
 }
